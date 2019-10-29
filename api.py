@@ -1,12 +1,13 @@
 # -*- coding:utf8 -*-
 import os
 import re
+import sys
 from lxml import html, etree
-#import pandas as pd
+import pandas as pd
 import requests
 import zipfile
 import io # for python 2.7 import StringIO
-import MeCab # NEED TO DO 'export LD_LIBRARY_PATH=/usr/local/lib'
+# import MeCab # NEED TO DO 'export LD_LIBRARY_PATH=/usr/local/lib'
 import pdb
 
 JST_API = 'http://api.jstage.jst.go.jp/searchapi/do'
@@ -38,7 +39,9 @@ def get_ris_files(href):
     stop = script.find('JA') + len('JA')
     ris_url = script[start:stop]
     r1 = requests.get(ris_url, stream=True)
-    z = zipfile.ZipFile(io.StringIO(r1.content))
+    # pdb.set_trace()
+    # z = zipfile.ZipFile(io.StringIO(r1.content)) # for python 2.7
+    z = zipfile.ZipFile(io.BytesIO(r1.content)) # for python 3+
     z.extractall()
     print('extracted %s files' % len(z.filelist))
 
@@ -65,16 +68,17 @@ def parse_ris(ris):
         print(m.parse(lines[4][5:]))
 
 
-def main():
-    volumes = get_volume_list(cdjournal = 'mez')
+def main(jid):
+    volumes = get_volume_list(cdjournal = jid)
     for index, row in volumes.iterrows():
         url = row['{http://www.w3.org/2005/Atom}id']
         print(url)
         get_ris_files(url)
 
 if __name__ == '__main__':
-    # main()
-    ris_files = get_ris_list('mez')
+    jid = sys.argv[1]
+    main(jid)
+    ris_files = get_ris_list(jid)
     for ris in ris_files:
         parse_ris(ris)
         print('%s/%s' % (ris_files.index(ris), len(ris_files)))
