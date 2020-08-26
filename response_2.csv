@@ -1,0 +1,50 @@
+No., XML タグ名, , , , , 内容, 備考
+, 第 1 階層, 第 2 階層, 第 3 階層, 第 4 階層, 属性, 
+1, xml, , , , , , <?xml version=\"1.0\"encoding=\"UTF-8\" ?>
+2, feed, , , , , , \"http://www.w3.org/2005/Atom\" 
+, , , , , , , \"http://prismstandard.org/namespaces/basic/2.0/\"
+, , , , , , , \"http://a9.com/-/spec/opensearch/1.1/\"
+, , , , , , , \"ja\"   
+3, feed, result
+4, feed, result, status, , , 処理結果ステータス, 0:正常 エラーの場合はエラーコード
+5, feed, result, message, , , 処理結果メッセージ, なし:正常 エラーの場合はエラーメッセージ
+6, feed, title, , , , フィード名, \"Volumes and Issues\"
+7, feed, link, , , ,  クエリの URL
+8, feed, id, , , , クエリの URI, link 要素と同様
+9, feed, servicecd, , , , サービスコード, 巻号一覧取得は 2
+10, feed, updated, , , , 取得日時, W3CDTF 表記
+11, feed, opensearch :totalResults, , , , 検索結果総数,
+12, feed, opensearch :startIndex  , , , , 開始件数, 検索結果総数のうち、出力を開始した件数
+13, feed, opensearch :itemsPerPage, , , , 件数, 検索結果総数のうち、レスポンスに出力した件数
+14, feed, entry
+15, feed, entry, vols_title, , , 巻号一覧表示名, 予稿集の場合、開催グループ名称
+16, feed, entry, vols_title, en, , 巻号一覧表示名(英)
+17, feed, entry, vols_title, ja, , 巻号一覧表示名(日)
+18, feed, entry, vols_link, , , 目次一覧 URL
+19, feed, entry, vols_link, en, , 目次一覧 URL(英)
+20, feed, entry, vols_link, ja, , 目次一覧 URL(日)
+21, feed, entry, prism:issn , , , Print ISSN
+22, feed, entry, prism:eIssn, , , Online ISSN
+23, feed, entry, publisher, , , 学協会
+24, feed, entry, publisher, name, , 学協会名
+25, feed, entry, publisher, name, en, 学協会名(英)
+26, feed, entry, publisher, name, ja, 学協会名(日)
+27, feed, entry, publisher, url, , 学協会 URL
+28, feed, entry, publisher, url, en, 学協会 URL(英)
+29, feed, entry, publisher, url, ja, 学協会 URL(日)
+30, feed, entry, publisher, cdjournal, , 資料コード, J-STAGE で付与される資料を識別するコード
+31, feed, entry, material_title, , , 資料名
+32, feed, entry, material_title, en, , 資料名(英)
+33, feed, entry, material_title, ja, , 資料名(日)
+34, feed, entry, prism:volume, , , 巻
+35, feed, entry, cdvols, , , 分冊
+36, feed, entry, prism:number, , , 号
+37, feed, entry, prism:startingPage, href, , 開始ページ
+38, feed, entry, prism:endingPage, , , 終了ページ
+39, feed, entry, pubyear, , , 発行年, 発行年が単一の場合は YYYY、発行年が複数年の場合は YYYY-YYYY
+40, feed, entry, systemcode, , , システムコード, 1:J-STAGE 公開されているシステムのコード
+41, feed, entry, systemname, , , システム名, “J-STAGE”
+42, feed, entry, title, , , サブフィード名 Atom, フィードで表示する名称 巻号一覧表示名（日）と同様
+43, feed, entry, link, , , サブフィード URL, 目次一覧画面(日)の URL
+44, feed, entry, id, , , サブフィード ID, サブフィード URL と同様
+45, feed, entry, updated, , , 最新公開日, 号内記事の最新公開日 W3CDTF 表記

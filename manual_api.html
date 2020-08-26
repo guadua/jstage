@@ -1,0 +1,1876 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils 0.14: http://docutils.sourceforge.net/" />
+<title>J-STAGE WebAPI ご利用マニュアル</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 7952 2016-07-26 18:15:59Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+
+See http://docutils.sf.net/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+.subscript {
+  vertical-align: sub;
+  font-size: smaller }
+
+.superscript {
+  vertical-align: super;
+  font-size: smaller }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title, .code .error {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left, table.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right, table.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table.align-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+.align-top    {
+  vertical-align: top }
+
+.align-middle {
+  vertical-align: middle }
+
+.align-bottom {
+  vertical-align: bottom }
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math, pre.code {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+pre.code .ln { color: grey; } /* line numbers */
+pre.code, code { background-color: #eeeeee }
+pre.code .comment, code .comment { color: #5C6576 }
+pre.code .keyword, code .keyword { color: #3B0D06; font-weight: bold }
+pre.code .literal.string, code .literal.string { color: #0C5404 }
+pre.code .name.builtin, code .name.builtin { color: #352B84 }
+pre.code .deleted, code .deleted { background-color: #DEB0A1}
+pre.code .inserted, code .inserted { background-color: #A3D289}
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+/* "booktabs" style (no vertical lines) */
+table.docutils.booktabs {
+  border: 0px;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-collapse: collapse;
+}
+table.docutils.booktabs * {
+  border: 0px;
+}
+table.docutils.booktabs th {
+  border-bottom: thin solid;
+  text-align: left;
+}
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+</head>
+<body>
+<div class="document" id="j-stage-webapi">
+<h1 class="title">J-STAGE WebAPI ご利用マニュアル</h1>
+
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">本APIは、利用規約をかならず熟読・遵守の上ご利用ください。JSTでは、APIご利用についてのご質問
+対応・サポートは行っておりません。ご利用方法等に関するお問い合わせ等にはお答えいたしかねますの
+で、本マニュアルをご参照の上、ご利用者様の責任においてご活用ください。</p>
+</div>
+<div class="section" id="id1">
+<h1>1. はじめに</h1>
+<div class="section" id="id2">
+<h2>1.1. J-STAGE WebAPI とは</h2>
+<p>J-STAGE に公開中の資料、巻・号、論文の情報を取得できるサービスです。J-STAGE WebAPI には、
+以下のような特徴があります。</p>
+<p>・ 資料や論文の詳細情報をメタデータ（XML 形式）で配信
+・ 条件を指定して J-STAGE の情報を一度に検索が可能
+・ Atom、OpenSearch に準拠しており、RSS リーダによる購読が可能</p>
+<p>J-STAGE WebAPI の主な機能は以下のとおりです。各機能から、公開されているシステム（J-STAGE）
+や、資料名などで検索した結果を取得できます。</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="30%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">機能名</th>
+<th class="head">説明</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>巻号一覧取得</td>
+<td>J-STAGE に公開されている巻・号の一覧を取得します 巻・号の発行年など、詳細な情報も取得できます</td>
+</tr>
+<tr><td>論文検索結果取得</td>
+<td>J-STAGE に公開されている論文の一覧を取得します 論文の公開日や書誌のメタ情報なども取得できます</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id3">
+<h2>1.2. 対象資料</h2>
+<p>J-STAGE から情報を取得できる資料は以下のとおりです。</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="30%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">システム名</th>
+<th class="head">資料名</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>J-STAGE</td>
+<td>ジャーナル</td>
+</tr>
+<tr><td>J-STAGE</td>
+<td>会議論文・要旨集</td>
+</tr>
+<tr><td>J-STAGE</td>
+<td>研究報告・技術報告</td>
+</tr>
+<tr><td>J-STAGE</td>
+<td>解説誌・一般情報誌</td>
+</tr>
+<tr><td>J-STAGE</td>
+<td>その他</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="id4">
+<h1>2. 利用方法</h1>
+<div class="section" id="id5">
+<h2>2.1. リクエスト</h2>
+<p>J-STAGE WebAPI へリクエストを送信します。リクエスト用 URL は、利用する機能（巻号一覧取得、
+論文検索結果取得）のサービスコードと検索条件をクエリに含めて作成します。</p>
+<p><a class="reference external" href="http://api.jstage.jst.go.jp/searchapi/do">http://api.jstage.jst.go.jp/searchapi/do</a>?(パラメータ=値)&amp;(パラメータ=値)&amp;...</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">※ クエリに指定可能なパラメータの詳細は、3.リクエストパラメータを参照してください。</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>■ 補足事項</p>
+<ul class="simple">
+<li>クエリの文字コードは UTF-8 です</li>
+<li>同一パラメータで複数の検索条件（AND 条件）を指定するときは、半角スペースで区切ります</li>
+<li>URL において使用禁止である値をパラメータで指定する場合は、文字コード UTF-8 で URL エン
+コードします。</li>
+</ul>
+<p>例）資料名が「情報管理」の巻号一覧結果を取得する場合</p>
+<p><a class="reference external" href="http://api.jstage.jst.go.jp/searchapi/do?service=2&amp;material=%e6%83%85%e5%a0%b1%e7%ae%a1%e7%90%86">http://api.jstage.jst.go.jp/searchapi/do?service=2&amp;material=%e6%83%85%e5%a0%b1%e7%ae%a1%e7%90%86</a></p>
+<p>例）資料名に「日本」と「科学」と「技術」を含む論文検索結果を取得する場合</p>
+<p class="last"><a class="reference external" href="http://api.jstage.jst.go.jp/searchapi/do?service=3&amp;material=%e6%97%a5%e6%9c%ac%20%e7%a7%91%e5%ad%a6%20%e6%8a%80%e8%a1%93">http://api.jstage.jst.go.jp/searchapi/do?service=3&amp;material=%e6%97%a5%e6%9c%ac%20%e7%a7%91%e5%ad%a6%20%e6%8a%80%e8%a1%93</a></p>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>2.2. レスポンス</h2>
+<p>J-STAGE WebAPI へリクエストした結果を、XML 形式のレスポンスで取得します。</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">※ レスポンスから取得可能な情報の詳細は、4.レスポンスフォーマットを参照してください。</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>■ 補足事項</p>
+<ul class="last simple">
+<li>XML の文字コードは UTF-8 です</li>
+<li>検索に失敗したときは、XML 形式でエラーコード、エラーメッセージが返却されます</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="id7">
+<h1>3. リクエストパラメータ</h1>
+<p>J-STAGE WebAPI に送信する HTTP リクエストの項目は以下のとおり</p>
+<div class="section" id="id8">
+<h2>3.1. 巻号一覧取得</h2>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="5%" />
+<col width="10%" />
+<col width="10%" />
+<col width="40%" />
+<col width="35%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">No.</th>
+<th class="head">パラメータ</th>
+<th class="head">必須 任意</th>
+<th class="head">内容</th>
+<th class="head">備考</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>1</td>
+<td>service</td>
+<td>必須</td>
+<td>利用する機能を指定します</td>
+<td>巻号一覧取得は 2 を指定</td>
+</tr>
+<tr><td>2</td>
+<td>pubyearfrom</td>
+<td>任意</td>
+<td>発行年の範囲（From）を指定します</td>
+<td>西暦 4 桁</td>
+</tr>
+<tr><td>3</td>
+<td>pubyearto</td>
+<td>任意</td>
+<td>発行年の範囲（To）を指定します</td>
+<td>西暦 4 桁</td>
+</tr>
+<tr><td>4</td>
+<td>material</td>
+<td>任意</td>
+<td>資料名の検索語句を指定します</td>
+<td>完全一致検索</td>
+</tr>
+<tr><td>5</td>
+<td>issn</td>
+<td>任意</td>
+<td>Online ISSNまたはPrint ISSN を指定します</td>
+<td>完全一致検索 XXXX-XXXX 形式</td>
+</tr>
+<tr><td>6</td>
+<td>cdjournal</td>
+<td>任意</td>
+<td>資料コードを指定します</td>
+<td>J-STAGE で付与される資料を識別するコード</td>
+</tr>
+<tr><td>7</td>
+<td>volorder</td>
+<td>任意</td>
+<td>巻の並び順を指定します ※</td>
+<td>1:昇順でソートする 2:降順でソートする 未指定の場合は 1</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>※ 巻号一覧は巻（volorder の指定順）、分冊（昇順）、号（昇順）でソートされます。</p>
+<p class="last">※ １資料分の巻号一覧を取得できます。リクエストパラーメータに指定した条件で資料を特
+定できない場合、エラーとなります。</p>
+</div>
+</div>
+<div class="section" id="id9">
+<h2>3.2. 論文検索結果取得</h2>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="5%" />
+<col width="10%" />
+<col width="10%" />
+<col width="40%" />
+<col width="35%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">No.</th>
+<th class="head">パラメータ</th>
+<th class="head">必須 任意</th>
+<th class="head">内容</th>
+<th class="head">備考</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>1</td>
+<td>service</td>
+<td>必須</td>
+<td>利用する機能を指定します</td>
+<td>論文検索結果取得は 3 を指定</td>
+</tr>
+<tr><td>2</td>
+<td>pubyearfrom</td>
+<td>任意</td>
+<td>発行年の範囲（From）を指定します</td>
+<td>西暦 4 桁</td>
+</tr>
+<tr><td>3</td>
+<td>pubyearto</td>
+<td>任意</td>
+<td>発行年の範囲（To）を指定します</td>
+<td>西暦 4 桁</td>
+</tr>
+<tr><td>4</td>
+<td>material</td>
+<td>任意</td>
+<td>資料名の検索語句を指定します</td>
+<td>中間一致検索 大文字・小文字、全角・半角は区別しない</td>
+</tr>
+<tr><td>5</td>
+<td>article</td>
+<td>任意</td>
+<td>論文タイトルの検索語句を指定します</td>
+<td>中間一致検索 大文字・小文字、全角・半角は区別しない</td>
+</tr>
+<tr><td>6</td>
+<td>author</td>
+<td>任意</td>
+<td>著者名の検索語句を指定します</td>
+<td>中間一致検索 大文字・小文字、全角・半角は区別しない</td>
+</tr>
+<tr><td>7</td>
+<td>affil</td>
+<td>任意</td>
+<td>著者所属機関の検索語句を指定します</td>
+<td>中間一致検索 大文字・小文字、全角・半角は区別しない</td>
+</tr>
+<tr><td>8</td>
+<td>keyword</td>
+<td>任意</td>
+<td>キーワードの検索語句を指定します</td>
+<td>中間一致検索 大文字・小文字、全角・半角は区別しない</td>
+</tr>
+<tr><td>9</td>
+<td>abst</td>
+<td>任意</td>
+<td>抄録の検索語句を指定します</td>
+<td>中間一致検索 大文字・小文字、全角・半角は区別しない</td>
+</tr>
+<tr><td>10</td>
+<td>text</td>
+<td>任意</td>
+<td>全文の検索語句を指定します</td>
+<td>中間一致検索 大文字・小文字、全角・半角は区別しない</td>
+</tr>
+<tr><td>11</td>
+<td>issn</td>
+<td>任意</td>
+<td>Online ISSN またはPrint ISSN を指定します</td>
+<td>完全一致検索 XXXX-XXXX 形式</td>
+</tr>
+<tr><td>12</td>
+<td>cdjournal</td>
+<td>任意</td>
+<td>資料コードを指定します</td>
+<td>J-STAGE で付与される資料を識別するコード</td>
+</tr>
+<tr><td>13</td>
+<td>sortflg</td>
+<td>任意</td>
+<td>検索結果の並び順を指定します</td>
+<td>1:検索結果のスコア順にソートする 2:巻、分冊、号、開始ページでソートする 未指定の場合は 1</td>
+</tr>
+<tr><td>14</td>
+<td>vol</td>
+<td>任意</td>
+<td>巻を指定します</td>
+<td>完全一致</td>
+</tr>
+<tr><td>15</td>
+<td>no</td>
+<td>任意</td>
+<td>号を指定します</td>
+<td>完全一致</td>
+</tr>
+<tr><td>16</td>
+<td>start</td>
+<td>任意</td>
+<td>検索結果の中から取得を開始する件数を指定します※</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>17</td>
+<td>count</td>
+<td>任意</td>
+<td>取得件数を指定します</td>
+<td>※ 最大 1000 件まで取得可能</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>※ 検索結果のうち 1,000 件まで取得できます。1,000 件を超えて取得するときは、開始件数
+を指定し、分割してレスポンスを取得する必要があります。</p>
+<p>例）1,001 件目から 1,000 件分(2,000 件目)の検索結果を取得する場合</p>
+<p class="last"><a class="reference external" href="http://api.jstage.jst.go.jp/searchapi/do?service=3&amp;material=%e6%97%a5%e6%9c%ac%20%e7%a7%91%e5%ad%a6&amp;start=1001&amp;count=1000">http://api.jstage.jst.go.jp/searchapi/do?service=3&amp;material=%e6%97%a5%e6%9c%ac%20%e7%a7%91%e5%ad%a6&amp;start=1001&amp;count=1000</a></p>
+</div>
+</div>
+</div>
+<div class="section" id="id10">
+<h1>4. レスポンスフォーマット</h1>
+<p>J-STAGE WebAPI から返却する XML のフォーマットは以下のとおり。</p>
+<div class="section" id="id11">
+<h2>巻号一覧取得</h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>No.</td>
+<td>XML タグ名</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>内容</td>
+<td>備考</td>
+</tr>
+<tr><td>&nbsp;</td>
+<td>第 1 階層</td>
+<td>第 2 階層</td>
+<td>第 3 階層</td>
+<td>第 4 階層</td>
+<td>属性</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>1</td>
+<td>xml</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&lt;?xml version=&quot;1.0&quot;encoding=&quot;UTF-8&quot; ?&gt;</td>
+</tr>
+<tr><td>2</td>
+<td>feed</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&quot;<a class="reference external" href="http://www.w3.org/2005/Atom">http://www.w3.org/2005/Atom</a>&quot;</td>
+</tr>
+<tr><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&quot;<a class="reference external" href="http://prismstandard.org/namespaces/basic/2.0/">http://prismstandard.org/namespaces/basic/2.0/</a>&quot;</td>
+</tr>
+<tr><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&quot;<a class="reference external" href="http://a9.com/-/spec/opensearch/1.1/">http://a9.com/-/spec/opensearch/1.1/</a>&quot;</td>
+</tr>
+<tr><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&quot;ja&quot;</td>
+</tr>
+<tr><td>3</td>
+<td>feed</td>
+<td>result</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>4</td>
+<td>feed</td>
+<td>result</td>
+<td>status</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>処理結果ステータス</td>
+<td>0:正常 エラーの場合はエラーコード</td>
+</tr>
+<tr><td>5</td>
+<td>feed</td>
+<td>result</td>
+<td>message</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>処理結果メッセージ</td>
+<td>なし:正常 エラーの場合はエラーメッセージ</td>
+</tr>
+<tr><td>6</td>
+<td>feed</td>
+<td>title</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>フィード名</td>
+<td>&quot;Volumes and Issues&quot;</td>
+</tr>
+<tr><td>7</td>
+<td>feed</td>
+<td>link</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>クエリの URL</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>8</td>
+<td>feed</td>
+<td>id</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>クエリの URI</td>
+<td>link 要素と同様</td>
+</tr>
+<tr><td>9</td>
+<td>feed</td>
+<td>servicecd</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>サービスコード</td>
+<td>巻号一覧取得は 2</td>
+</tr>
+<tr><td>10</td>
+<td>feed</td>
+<td>updated</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>取得日時</td>
+<td>W3CDTF 表記</td>
+</tr>
+<tr><td>11</td>
+<td>feed</td>
+<td>opensearch :totalResults</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>検索結果総数</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>12</td>
+<td>feed</td>
+<td>opensearch :startIndex</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>開始件数</td>
+<td>検索結果総数のうち、出力を開始した件数</td>
+</tr>
+<tr><td>13</td>
+<td>feed</td>
+<td>opensearch :itemsPerPage</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>件数</td>
+<td>検索結果総数のうち、レスポンスに出力した件数</td>
+</tr>
+<tr><td>14</td>
+<td>feed</td>
+<td>entry</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>15</td>
+<td>feed</td>
+<td>entry</td>
+<td>vols_title</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>巻号一覧表示名</td>
+<td>予稿集の場合、開催グループ名称</td>
+</tr>
+<tr><td>16</td>
+<td>feed</td>
+<td>entry</td>
+<td>vols_title</td>
+<td>en</td>
+<td>&nbsp;</td>
+<td>巻号一覧表示名(英)</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>17</td>
+<td>feed</td>
+<td>entry</td>
+<td>vols_title</td>
+<td>ja</td>
+<td>&nbsp;</td>
+<td>巻号一覧表示名(日)</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>18</td>
+<td>feed</td>
+<td>entry</td>
+<td>vols_link</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>目次一覧 URL</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>19</td>
+<td>feed</td>
+<td>entry</td>
+<td>vols_link</td>
+<td>en</td>
+<td>&nbsp;</td>
+<td>目次一覧 URL(英)</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>20</td>
+<td>feed</td>
+<td>entry</td>
+<td>vols_link</td>
+<td>ja</td>
+<td>&nbsp;</td>
+<td>目次一覧 URL(日)</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>21</td>
+<td>feed</td>
+<td>entry</td>
+<td>prism:issn</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Print ISSN</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>22</td>
+<td>feed</td>
+<td>entry</td>
+<td>prism:eIssn</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Online ISSN</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>23</td>
+<td>feed</td>
+<td>entry</td>
+<td>publisher</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>学協会</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>24</td>
+<td>feed</td>
+<td>entry</td>
+<td>publisher</td>
+<td>name</td>
+<td>&nbsp;</td>
+<td>学協会名</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>25</td>
+<td>feed</td>
+<td>entry</td>
+<td>publisher</td>
+<td>name</td>
+<td>en</td>
+<td>学協会名(英)</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>26</td>
+<td>feed</td>
+<td>entry</td>
+<td>publisher</td>
+<td>name</td>
+<td>ja</td>
+<td>学協会名(日)</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>27</td>
+<td>feed</td>
+<td>entry</td>
+<td>publisher</td>
+<td>url</td>
+<td>&nbsp;</td>
+<td>学協会 URL</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>28</td>
+<td>feed</td>
+<td>entry</td>
+<td>publisher</td>
+<td>url</td>
+<td>en</td>
+<td>学協会 URL(英)</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>29</td>
+<td>feed</td>
+<td>entry</td>
+<td>publisher</td>
+<td>url</td>
+<td>ja</td>
+<td>学協会 URL(日)</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>30</td>
+<td>feed</td>
+<td>entry</td>
+<td>publisher</td>
+<td>cdjournal</td>
+<td>&nbsp;</td>
+<td>資料コード</td>
+<td>J-STAGE で付与される資料を識別するコード</td>
+</tr>
+<tr><td>31</td>
+<td>feed</td>
+<td>entry</td>
+<td>material_title</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>資料名</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>32</td>
+<td>feed</td>
+<td>entry</td>
+<td>material_title</td>
+<td>en</td>
+<td>&nbsp;</td>
+<td>資料名(英)</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>33</td>
+<td>feed</td>
+<td>entry</td>
+<td>material_title</td>
+<td>ja</td>
+<td>&nbsp;</td>
+<td>資料名(日)</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>34</td>
+<td>feed</td>
+<td>entry</td>
+<td>prism:volume</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>巻</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>35</td>
+<td>feed</td>
+<td>entry</td>
+<td>cdvols</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>分冊</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>36</td>
+<td>feed</td>
+<td>entry</td>
+<td>prism:number</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>号</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>37</td>
+<td>feed</td>
+<td>entry</td>
+<td>prism:startingPage</td>
+<td>href</td>
+<td>&nbsp;</td>
+<td>開始ページ</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>38</td>
+<td>feed</td>
+<td>entry</td>
+<td>prism:endingPage</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>終了ページ</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>39</td>
+<td>feed</td>
+<td>entry</td>
+<td>pubyear</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>発行年</td>
+<td>発行年が単一の場合は YYYY、発行年が複数年の場合は YYYY-YYYY</td>
+</tr>
+<tr><td>40</td>
+<td>feed</td>
+<td>entry</td>
+<td>systemcode</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>システムコード</td>
+<td>1:J-STAGE 公開されているシステムのコード</td>
+</tr>
+<tr><td>41</td>
+<td>feed</td>
+<td>entry</td>
+<td>systemname</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>システム名</td>
+<td>“J-STAGE”</td>
+</tr>
+<tr><td>42</td>
+<td>feed</td>
+<td>entry</td>
+<td>title</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>サブフィード名 Atom</td>
+<td>フィードで表示する名称 巻号一覧表示名（日）と同様</td>
+</tr>
+<tr><td>43</td>
+<td>feed</td>
+<td>entry</td>
+<td>link</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>サブフィード URL</td>
+<td>目次一覧画面(日)の URL</td>
+</tr>
+<tr><td>44</td>
+<td>feed</td>
+<td>entry</td>
+<td>id</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>サブフィード ID</td>
+<td>サブフィード URL と同様</td>
+</tr>
+<tr><td>45</td>
+<td>feed</td>
+<td>entry</td>
+<td>updated</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>最新公開日</td>
+<td>号内記事の最新公開日 W3CDTF 表記</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id12">
+<h2>論文検索結果取得</h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+<col width="13%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>No.</td>
+<td>XML タグ名</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>出力内容</td>
+<td>備考</td>
+</tr>
+<tr><td>&nbsp;</td>
+<td>第 1 階層</td>
+<td>第 2 階層</td>
+<td>第 3 階層</td>
+<td>第 4 階層</td>
+<td>属性</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>1</td>
+<td>xml</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&lt;?xml version=&quot;1.0&quot;encoding=&quot;UTF-8&quot; ?&gt;</td>
+</tr>
+<tr><td>2</td>
+<td>feed</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&quot;<a class="reference external" href="http://www.w3.org/2005/Atom">http://www.w3.org/2005/Atom</a>&quot;</td>
+</tr>
+<tr><td>2</td>
+<td>feed</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&quot;<a class="reference external" href="http://prismstandard.org/namespaces/basic/2.0/">http://prismstandard.org/namespaces/basic/2.0/</a>&quot;</td>
+</tr>
+<tr><td>2</td>
+<td>feed</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&quot;<a class="reference external" href="http://a9.com/-/spec/opensearch/1.1/">http://a9.com/-/spec/opensearch/1.1/</a>&quot;</td>
+</tr>
+<tr><td>2</td>
+<td>feed</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&quot;ja&quot;</td>
+</tr>
+<tr><td>3</td>
+<td>feed</td>
+<td>result</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>4</td>
+<td>feed</td>
+<td>result</td>
+<td>status</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>処理結果ステータス</td>
+<td>0:正常 エラーの場合はエラーコード</td>
+</tr>
+<tr><td>5</td>
+<td>feed</td>
+<td>result</td>
+<td>message</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>処理結果メッセージ</td>
+<td>なし:正常 エラーの場合はエラーメッセージ</td>
+</tr>
+<tr><td>6</td>
+<td>feed</td>
+<td>title</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&quot;Articles&quot;</td>
+</tr>
+<tr><td>7</td>
+<td>feed</td>
+<td>link</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>クエリの URI</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>8</td>
+<td>feed</td>
+<td>id</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>id</td>
+<td>link 要素と同様</td>
+</tr>
+<tr><td>9</td>
+<td>feed</td>
+<td>servicecd</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>サービスコード</td>
+<td>論文検索結果取得は 3</td>
+</tr>
+<tr><td>10</td>
+<td>feed</td>
+<td>updated</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>取得日時</td>
+<td>W3CDTF 表記</td>
+</tr>
+<tr><td>11</td>
+<td>feed</td>
+<td>opensearch:totalResults</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>検索結果総数</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>12</td>
+<td>feed</td>
+<td>opensearch:startIndex</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>開始件数</td>
+<td>検索結果総数のうち、出力を開始した件数</td>
+</tr>
+<tr><td>13</td>
+<td>feed</td>
+<td>opensearch:itemsPerPage</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>件数</td>
+<td>検索結果総数のうち、レスポンスに出力した件数</td>
+</tr>
+<tr><td>14</td>
+<td>feed</td>
+<td>entry</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>15</td>
+<td>feed</td>
+<td>entry</td>
+<td>article_title</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>論文タイトル</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>16</td>
+<td>feed</td>
+<td>entry</td>
+<td>article_title</td>
+<td>en</td>
+<td>&nbsp;</td>
+<td>論文タイトル(英)</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>17</td>
+<td>feed</td>
+<td>entry</td>
+<td>article_title</td>
+<td>ja</td>
+<td>&nbsp;</td>
+<td>論文タイトル(日)</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>18</td>
+<td>feed</td>
+<td>entry</td>
+<td>article_link</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>書誌</td>
+<td>URL 書誌事項画面の URL</td>
+</tr>
+<tr><td>19</td>
+<td>feed</td>
+<td>entry</td>
+<td>article_link</td>
+<td>en</td>
+<td>&nbsp;</td>
+<td>書誌 URL(英)</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>20</td>
+<td>feed</td>
+<td>entry</td>
+<td>article_link</td>
+<td>ja</td>
+<td>&nbsp;</td>
+<td>書誌 URL(日)</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>21</td>
+<td>feed</td>
+<td>entry</td>
+<td>author</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>著者名</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>22</td>
+<td>feed</td>
+<td>entry</td>
+<td>author</td>
+<td>en</td>
+<td>&nbsp;</td>
+<td>著者名(英)</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>23</td>
+<td>feed</td>
+<td>entry</td>
+<td>author</td>
+<td>ja</td>
+<td>&nbsp;</td>
+<td>著者名(日)</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>24</td>
+<td>feed</td>
+<td>entry</td>
+<td>cdjournal</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>資料コード</td>
+<td>J-STAGE で付与される資料を識別するコード</td>
+</tr>
+<tr><td>25</td>
+<td>feed</td>
+<td>entry</td>
+<td>material_title</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>資料名</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>26</td>
+<td>feed</td>
+<td>entry</td>
+<td>material_title</td>
+<td>en</td>
+<td>&nbsp;</td>
+<td>資料名(英)</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>27</td>
+<td>feed</td>
+<td>entry</td>
+<td>material_title</td>
+<td>ja</td>
+<td>&nbsp;</td>
+<td>資料名(日)</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>28</td>
+<td>feed</td>
+<td>entry</td>
+<td>prism:issn</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Print ISSN</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>29</td>
+<td>feed</td>
+<td>entry</td>
+<td>prism:eIssn</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>Online ISSN</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>30</td>
+<td>feed</td>
+<td>entry</td>
+<td>prism:volume</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>巻</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>31</td>
+<td>feed</td>
+<td>entry</td>
+<td>cdvols</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>分冊</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>32</td>
+<td>feed</td>
+<td>entry</td>
+<td>prism:number</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>号</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>33</td>
+<td>feed</td>
+<td>entry</td>
+<td>prism:startingPage</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>開始ページ</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>34</td>
+<td>feed</td>
+<td>entry</td>
+<td>prism:endingPage</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>終了ページ</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>35</td>
+<td>feed</td>
+<td>entry</td>
+<td>pubyear</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>発行年</td>
+<td>発行年が単一の場合は YYYY、発行年が複数年の場合は YYYY-YYYY</td>
+</tr>
+<tr><td>36</td>
+<td>feed</td>
+<td>entry</td>
+<td>joi</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>JOI</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>37</td>
+<td>feed</td>
+<td>entry</td>
+<td>prism:doi</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>DOI</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>38</td>
+<td>feed</td>
+<td>entry</td>
+<td>systemcode</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>システムコード</td>
+<td>1:J-STAGE 公開されているシステムのコード</td>
+</tr>
+<tr><td>39</td>
+<td>feed</td>
+<td>entry</td>
+<td>systemname</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>システム名</td>
+<td>&quot;J-STAGE&quot;</td>
+</tr>
+<tr><td>40</td>
+<td>feed</td>
+<td>entry</td>
+<td>title</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>サブフィード名</td>
+<td>Atom フィードで表示する名称 論文タイトル（日）と同様</td>
+</tr>
+<tr><td>41</td>
+<td>feed</td>
+<td>entry</td>
+<td>link</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>サブフィード URL</td>
+<td>書誌事項画面(日)の URL</td>
+</tr>
+<tr><td>42</td>
+<td>feed</td>
+<td>entry</td>
+<td>id</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>サブフィード ID</td>
+<td>サブフィード URL と同様</td>
+</tr>
+<tr><td>43</td>
+<td>feed</td>
+<td>entry</td>
+<td>updated</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>記事の公開日</td>
+<td>記事の公開日 W3CDTF 表記</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="id13">
+<h1>5. エラーメッセージ</h1>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+<col width="17%" />
+</colgroup>
+<tbody valign="top">
+<tr><td>No.</td>
+<td>エラー内容</td>
+<td>XML 出力内容</td>
+<td>&nbsp;</td>
+<td>備考</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>コード</td>
+<td>メッセージ</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>1</td>
+<td>検索結果が 0 件の場合</td>
+<td>ERR_001</td>
+<td>ERR_001</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>2</td>
+<td>記事検索結果を取得したが、検索結果件数が上限件数を超えた場合</td>
+<td>WARN_002</td>
+<td>WARN_002</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>3</td>
+<td>J-STAGE WebAPI への同時アクセス数が制限値を超えた場合</td>
+<td>ERR_003</td>
+<td>ERR_003</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>4</td>
+<td>サービス区分、検索対象システム、巻順などに無効な値が設定された場合</td>
+<td>ERR_004</td>
+<td>ERR_004:{0}</td>
+<td>*{0}には、パラメータ名を出力</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>5</td>
+<td>必須項目が未指定の場合</td>
+<td>ERR_005</td>
+<td>ERR_005:{0}</td>
+<td>*{0}には、未指定の必須項目のパラメータ名を出力</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>6</td>
+<td>発行年に数値 4 桁以外の値が設定された場合</td>
+<td>ERR_006</td>
+<td>ERR_006:{0}</td>
+<td>*{0}には、パラメータ名を出力</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>7</td>
+<td>記事検索結果の取得で「開始件数」と「取得件数」に数字以外が指定された場合</td>
+<td>ERR_007</td>
+<td>ERR_007:{0}</td>
+<td>*{0}には、パラメータ名を出力</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>8</td>
+<td>「ISSN」が XXXX-XXXX フォーマット以外で指定された場合</td>
+<td>ERR_008</td>
+<td>ERR_008:{0}</td>
+<td>*{0}には、パラメータ名を出力</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>9</td>
+<td>システムの致命的なエラーが発生した場合</td>
+<td>SYS_ERR_009</td>
+<td>SYS_ERR_009</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>10</td>
+<td>不正な URL が入力された場合</td>
+<td>ERR_010</td>
+<td>ERR_010</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>11</td>
+<td>巻号一覧の取得で、資料名、ISSN、資料コードが一つも入力されていない場合</td>
+<td>ERR_011</td>
+<td>ERR_011:{0}</td>
+<td>*{0}には、必須項目のパラメータ名を出力</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>12</td>
+<td>論文一覧の取得で、資料名、論文名、著者名、著者所属機関、著者キーワード、抄録、全文、ISSN、資料コード、巻、号が一つも入力されていない場合</td>
+<td>ERR_012</td>
+<td>ERR_012:{0}</td>
+<td>*{0}には、必須項目のパラメータ名を出力</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>13</td>
+<td>巻号一覧の取得で、検索条件で資料が特定できない場合</td>
+<td>ERR_013</td>
+<td>ERR_013</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr><td>14</td>
+<td>論文検索結果の取得で、ソート使用時に資料名、ISSN のいずれも設定されていない場合</td>
+<td>ERR_014</td>
+<td>ERR_014</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="xml">
+<h1>6. XML データサンプル</h1>
+<p>J-STAGE WebAPI から返却される XML データのサンプルは以下のとおり。</p>
+<div class="section" id="id14">
+<h2>6.1. 巻号一覧</h2>
+<pre class="code xml literal-block">
+<span class="comment preproc">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="name tag">&lt;feed</span> <span class="name attribute">xmlns=</span><span class="literal string">&quot;http://www.w3.org/2005/Atom&quot;</span>
+<span class="name attribute">xmlns:prism=</span><span class="literal string">&quot;http://prismstandard.org/namespaces/basic/2.0/&quot;</span>
+<span class="name attribute">xmlns:opensearch=</span><span class="literal string">&quot;http://a9.com/-/spec/opensearch/1.1/&quot;</span>
+<span class="name attribute">xml:lang=</span><span class="literal string">&quot;ja&quot;</span><span class="name tag">&gt;</span>
+<span class="name tag">&lt;result&gt;</span>
+<span class="name tag">&lt;status&gt;</span>0<span class="name tag">&lt;/status&gt;</span>
+<span class="name tag">&lt;message/&gt;</span>
+<span class="name tag">&lt;/result&gt;</span>
+<span class="name tag">&lt;title&gt;</span>Volumes and Issues<span class="name tag">&lt;/title&gt;</span>
+<span class="name tag">&lt;link</span>
+<span class="name attribute">href=</span><span class="literal string">&quot;http://xxx.xxx.xx/do?service=2&amp;amp;system=1&amp;amp;pubyearfrom=&amp;amp;pubyearto=&amp;amp;material=%E6%83
+%85%E5%A0%B1%E7%AE%A1%E7%90%86&amp;amp;issn=&amp;amp;cdjournal=&amp;amp;volorder=&amp;amp;article=&amp;amp;author=&amp;amp;af
+fil=&amp;amp;keyword=&amp;amp;abst=&amp;amp;text=&amp;amp;sortflg=&amp;amp;vol=&amp;amp;no=&amp;amp;start=&amp;amp;count=100&quot;</span><span class="name tag">/&gt;</span>
+
+<span class="name tag">&lt;id&gt;</span>http://xxx.xxx.xx/do?service=2<span class="name entity">&amp;amp;</span>system=1<span class="name entity">&amp;amp;</span>pubyearfrom=<span class="name entity">&amp;amp;</span>pubyearto=<span class="name entity">&amp;amp;</span>material=%E6%83%8
+5%E5%A0%B1%E7%AE%A1%E7%90%86<span class="name entity">&amp;amp;</span>issn=<span class="name entity">&amp;amp;</span>cdjournal=<span class="name entity">&amp;amp;</span>volorder=<span class="name entity">&amp;amp;</span>article=<span class="name entity">&amp;amp;</span>author=<span class="name entity">&amp;amp;</span>affi
+l=<span class="name entity">&amp;amp;</span>keyword=<span class="name entity">&amp;amp;</span>abst=<span class="name entity">&amp;amp;</span>text=<span class="name entity">&amp;amp;</span>sortflg=<span class="name entity">&amp;amp;</span>vol=<span class="name entity">&amp;amp;</span>no=<span class="name entity">&amp;amp;</span>start=<span class="name entity">&amp;amp;</span>count=100<span class="name tag">&lt;/id&gt;</span>
+<span class="name tag">&lt;servicecd&gt;</span>2<span class="name tag">&lt;/servicecd&gt;</span>
+<span class="name tag">&lt;updated&gt;</span>2010-04-24T15:09+09:00<span class="name tag">&lt;/updated&gt;</span>
+<span class="name tag">&lt;opensearch:totalResults&gt;</span>1<span class="name tag">&lt;/opensearch:totalResults&gt;</span>
+<span class="name tag">&lt;opensearch:startIndex&gt;</span>1<span class="name tag">&lt;/opensearch:startIndex&gt;</span>
+<span class="name tag">&lt;opensearch:itemsPerPage&gt;</span>1<span class="name tag">&lt;/opensearch:itemsPerPage&gt;</span>
+<span class="name tag">&lt;entry&gt;</span>
+<span class="name tag">&lt;vols_title&gt;</span>
+<span class="name tag">&lt;en&gt;</span><span class="comment preproc">&lt;![CDATA[Vol. 39 (1996) , No. 1]]&gt;</span><span class="name tag">&lt;/en&gt;</span>
+<span class="name tag">&lt;ja&gt;</span><span class="comment preproc">&lt;![CDATA[Vol. 39 (1996) , No. 1]]&gt;</span><span class="name tag">&lt;/ja&gt;</span>
+<span class="name tag">&lt;/vols_title&gt;</span>
+<span class="name tag">&lt;vols_link&gt;</span>
+<span class="name tag">&lt;en&gt;</span>http://www.jstage.jst.go.jp/browse/johokanri/39/1/_contents<span class="name tag">&lt;/en&gt;</span>
+<span class="name tag">&lt;ja&gt;</span>http://www.jstage.jst.go.jp/browse/johokanri/39/1/_contents/-char/ja/<span class="name tag">&lt;/ja&gt;</span>
+<span class="name tag">&lt;/vols_link&gt;</span>
+<span class="name tag">&lt;prism:issn&gt;</span>0021-7298<span class="name tag">&lt;/prism:issn&gt;</span>
+<span class="name tag">&lt;prism:eIssn&gt;</span>1347-1597<span class="name tag">&lt;/prism:eIssn&gt;</span>
+<span class="name tag">&lt;publisher&gt;</span>
+<span class="name tag">&lt;name/&gt;</span>
+<span class="name tag">&lt;url&gt;</span>
+<span class="name tag">&lt;en&gt;</span>http://xxx.xxxx.xx.xx<span class="name tag">&lt;/en&gt;</span>
+<span class="name tag">&lt;ja&gt;</span>http://xxx.xxxx.xx.xx<span class="name tag">&lt;/ja&gt;</span>
+<span class="name tag">&lt;/url&gt;</span>
+<span class="name tag">&lt;/publisher&gt;</span>
+<span class="name tag">&lt;cdjournal&gt;</span>johokanri<span class="name tag">&lt;/cdjournal&gt;</span>
+<span class="name tag">&lt;material_title&gt;</span>
+<span class="name tag">&lt;en&gt;</span><span class="comment preproc">&lt;![CDATA[Journal of Information Processing and Management]]&gt;</span><span class="name tag">&lt;/en&gt;</span>
+<span class="name tag">&lt;ja&gt;</span><span class="comment preproc">&lt;![CDATA[情報管理]]&gt;</span><span class="name tag">&lt;/ja&gt;</span>
+<span class="name tag">&lt;/material_title&gt;</span>
+<span class="name tag">&lt;prism:volume&gt;</span>39<span class="name tag">&lt;/prism:volume&gt;</span>
+<span class="name tag">&lt;prism:number&gt;</span>1<span class="name tag">&lt;/prism:number&gt;</span>
+<span class="name tag">&lt;prism:startingPage&gt;</span>1<span class="name tag">&lt;/prism:startingPage&gt;</span>
+<span class="name tag">&lt;pubyear&gt;</span>1996<span class="name tag">&lt;/pubyear&gt;</span>
+<span class="name tag">&lt;systemcode&gt;</span>1<span class="name tag">&lt;/systemcode&gt;</span>
+<span class="name tag">&lt;systemname&gt;</span>J-STAGE<span class="name tag">&lt;/systemname&gt;</span>
+<span class="name tag">&lt;title&gt;</span><span class="comment preproc">&lt;![CDATA[Vol. 39 (1996) , No. 1]]&gt;</span><span class="name tag">&lt;/title&gt;</span>
+<span class="name tag">&lt;link</span> <span class="name attribute">href=</span><span class="literal string">&quot;http://www.jstage.jst.go.jp/browse/johokanri/39/1/_contents/-char/ja/&quot;</span><span class="name tag">/&gt;</span>
+<span class="name tag">&lt;id&gt;</span>http://www.jstage.jst.go.jp/browse/johokanri/39/1/_contents/-char/ja/<span class="name tag">&lt;/id&gt;</span>
+<span class="name tag">&lt;updated&gt;</span>2001-04-01T00:00+09:00<span class="name tag">&lt;/updated&gt;</span>
+<span class="name tag">&lt;/entry&gt;</span>
+<span class="name tag">&lt;/feed&gt;</span>
+</pre>
+</div>
+<div class="section" id="id15">
+<h2>論文検索結果</h2>
+<pre class="code xml literal-block">
+<span class="comment preproc">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="name tag">&lt;feed</span> <span class="name attribute">xmlns=</span><span class="literal string">&quot;http://www.w3.org/2005/Atom&quot;</span>
+<span class="name attribute">xmlns:prism=</span><span class="literal string">&quot;http://prismstandard.org/namespaces/basic/2.0/&quot;</span>
+<span class="name attribute">xmlns:opensearch=</span><span class="literal string">&quot;http://a9.com/-/spec/opensearch/1.1/&quot;</span>
+<span class="name attribute">xml:lang=</span><span class="literal string">&quot;ja&quot;</span><span class="name tag">&gt;</span>
+<span class="name tag">&lt;result&gt;</span>
+<span class="name tag">&lt;status&gt;</span>0<span class="name tag">&lt;/status&gt;</span>
+<span class="name tag">&lt;message/&gt;</span>
+<span class="name tag">&lt;/result&gt;</span>
+<span class="name tag">&lt;title&gt;</span>Articles<span class="name tag">&lt;/title&gt;</span>
+<span class="name tag">&lt;link</span>
+<span class="name attribute">href=</span><span class="literal string">&quot;http://xxx.xxx.xx/do?service=3&amp;amp;system=1&amp;amp;pubyearfrom=&amp;amp;pubyearto=&amp;amp;material=%E6%83
+%85%E5%A0%B1%E7%AE%A1%E7%90%86&amp;amp;issn=&amp;amp;cdjournal=&amp;amp;volorder=&amp;amp;article=&amp;amp;author=&amp;amp;af
+fil=&amp;amp;keyword=&amp;amp;abst=&amp;amp;text=&amp;amp;sortflg=&amp;amp;vol=&amp;amp;no=&amp;amp;start=&amp;amp;count=100&quot;</span><span class="name tag">/&gt;</span>
+
+<span class="name tag">&lt;id&gt;</span>http://xxx.xxx.xx//do?service=3<span class="name entity">&amp;amp;</span>system=1<span class="name entity">&amp;amp;</span>pubyearfrom=<span class="name entity">&amp;amp;</span>pubyearto=<span class="name entity">&amp;amp;</span>material=%E6%83%
+85%E5%A0%B1%E7%AE%A1%E7%90%86<span class="name entity">&amp;amp;</span>issn=<span class="name entity">&amp;amp;</span>cdjournal=<span class="name entity">&amp;amp;</span>volorder=<span class="name entity">&amp;amp;</span>article=<span class="name entity">&amp;amp;</span>author=<span class="name entity">&amp;amp;</span>aff
+il=<span class="name entity">&amp;amp;</span>keyword=<span class="name entity">&amp;amp;</span>abst=<span class="name entity">&amp;amp;</span>text=<span class="name entity">&amp;amp;</span>sortflg=<span class="name entity">&amp;amp;</span>vol=<span class="name entity">&amp;amp;</span>no=<span class="name entity">&amp;amp;</span>start=<span class="name entity">&amp;amp;</span>count=100<span class="name tag">&lt;/id&gt;</span>
+<span class="name tag">&lt;servicecd&gt;</span>3<span class="name tag">&lt;/servicecd&gt;</span>
+<span class="name tag">&lt;updated&gt;</span>2010-04-24T15:13+09:00<span class="name tag">&lt;/updated&gt;</span>
+<span class="name tag">&lt;opensearch:totalResults&gt;</span>1<span class="name tag">&lt;/opensearch:totalResults&gt;</span>
+<span class="name tag">&lt;opensearch:startIndex&gt;</span>1<span class="name tag">&lt;/opensearch:startIndex&gt;</span>
+<span class="name tag">&lt;opensearch:itemsPerPage&gt;</span>1<span class="name tag">&lt;/opensearch:itemsPerPage&gt;</span>
+<span class="name tag">&lt;entry&gt;</span>
+<span class="name tag">&lt;article_title&gt;</span>
+<span class="name tag">&lt;en&gt;</span><span class="comment preproc">&lt;![CDATA[Free Internet Access to Traditional Journals]]&gt;</span><span class="name tag">&lt;/en&gt;</span>
+<span class="name tag">&lt;ja&gt;</span><span class="comment preproc">&lt;![CDATA[学術雑誌のインターネット上での無料アクセス提供]]&gt;</span><span class="name tag">&lt;/ja&gt;</span>
+<span class="name tag">&lt;/article_title&gt;</span>
+<span class="name tag">&lt;article_link&gt;</span>
+<span class="name tag">&lt;en&gt;</span>http://www.jstage.jst.go.jp/article/johokanri/41/9/41_678/_article<span class="name tag">&lt;/en&gt;</span>
+<span class="name tag">&lt;ja&gt;</span>http://www.jstage.jst.go.jp/article/johokanri/41/9/41_678/_article/-char/ja/<span class="name tag">&lt;/ja&gt;</span>
+<span class="name tag">&lt;/article_link&gt;</span>
+<span class="name tag">&lt;author&gt;</span>
+<span class="name tag">&lt;en&gt;</span>
+<span class="name tag">&lt;name&gt;</span><span class="comment preproc">&lt;![CDATA[Thomas J. Walker]]&gt;</span><span class="name tag">&lt;/name&gt;</span>
+<span class="name tag">&lt;name&gt;</span><span class="comment preproc">&lt;![CDATA[Soichi, transl. TOKIZANE]]&gt;</span><span class="name tag">&lt;/name&gt;</span>
+<span class="name tag">&lt;/en&gt;</span>
+<span class="name tag">&lt;ja&gt;</span>
+<span class="name tag">&lt;name&gt;</span><span class="comment preproc">&lt;![CDATA[ウォーカー トーマス J.]]&gt;</span><span class="name tag">&lt;/name&gt;</span>
+<span class="name tag">&lt;name&gt;</span><span class="comment preproc">&lt;![CDATA[時実 象一 :訳]]&gt;</span><span class="name tag">&lt;/name&gt;</span>
+<span class="name tag">&lt;/ja&gt;</span>
+<span class="name tag">&lt;/author&gt;</span>
+<span class="name tag">&lt;cdjournal&gt;</span>johokanri<span class="name tag">&lt;/cdjournal&gt;</span>
+<span class="name tag">&lt;material_title&gt;</span>
+<span class="name tag">&lt;en&gt;</span><span class="comment preproc">&lt;![CDATA[Journal of Information Processing and Management]]&gt;</span><span class="name tag">&lt;/en&gt;</span>
+<span class="name tag">&lt;ja&gt;</span><span class="comment preproc">&lt;![CDATA[情報管理]]&gt;</span><span class="name tag">&lt;/ja&gt;</span>
+<span class="name tag">&lt;/material_title&gt;</span>
+<span class="name tag">&lt;prism:issn&gt;</span>0021-7298<span class="name tag">&lt;/prism:issn&gt;</span>
+<span class="name tag">&lt;prism:eIssn&gt;</span>1347-1597<span class="name tag">&lt;/prism:eIssn&gt;</span>
+<span class="name tag">&lt;prism:volume&gt;</span>41<span class="name tag">&lt;/prism:volume&gt;</span>
+<span class="name tag">&lt;prism:number&gt;</span>9<span class="name tag">&lt;/prism:number&gt;</span>
+<span class="name tag">&lt;prism:startingPage&gt;</span>678<span class="name tag">&lt;/prism:startingPage&gt;</span>
+<span class="name tag">&lt;prism:endingPage&gt;</span>694<span class="name tag">&lt;/prism:endingPage&gt;</span>
+<span class="name tag">&lt;pubyear&gt;</span>1998<span class="name tag">&lt;/pubyear&gt;</span>
+<span class="name tag">&lt;joi&gt;</span>JST.JSTAGE/johokanri/41.678<span class="name tag">&lt;/joi&gt;</span>
+<span class="name tag">&lt;prism:doi&gt;</span>10.1241/johokanri.41.678<span class="name tag">&lt;/prism:doi&gt;</span>
+<span class="name tag">&lt;systemcode&gt;</span>1<span class="name tag">&lt;/systemcode&gt;</span>
+<span class="name tag">&lt;systemname&gt;</span>J-STAGE<span class="name tag">&lt;/systemname&gt;</span>
+<span class="name tag">&lt;title&gt;</span><span class="comment preproc">&lt;![CDATA[学術雑誌のインターネット上での無料アクセス提供]]&gt;</span><span class="name tag">&lt;/title&gt;</span>
+<span class="name tag">&lt;link</span> <span class="name attribute">href=</span><span class="literal string">&quot;http://www.jstage.jst.go.jp/article/johokanri/41/9/41_678/_article/-char/ja/&quot;</span><span class="name tag">/&gt;</span>
+<span class="name tag">&lt;id&gt;</span>http://www.jstage.jst.go.jp/article/johokanri/41/9/41_678/_article/-char/ja/<span class="name tag">&lt;/id&gt;</span>
+<span class="name tag">&lt;updated&gt;</span>2001-04-01T00:00+09:00<span class="name tag">&lt;/updated&gt;</span>
+<span class="name tag">&lt;/entry&gt;</span>
+<span class="name tag">&lt;/feed&gt;</span>
+</pre>
+</div>
+</div>
+<div class="section" id="id16">
+<h1>（ご注意）</h1>
+<p>本マニュアルおよびシステムのご提供・ご利用にあたって、JST は一切その責を負いません。利用
+者様の責任においてご活用ください。</p>
+<p>また、バグ等のご報告を除き、機能や使い方等のお問い合わせ対応・サポート等も行っておりませ
+ん。何卒ご了承くださいますようお願い申し上げます。</p>
+</div>
+</div>
+</body>
+</html>

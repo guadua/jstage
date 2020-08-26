@@ -152,111 +152,16 @@ J-STAGE WebAPI から返却する XML のフォーマットは以下のとおり
 ^^^^^^^^^^^^^^^^
 
 .. csv-table::
+   :file: response_2.csv
 
-   No., XML タグ名, , , , , 内容, 備考
-   , 第 1 階層, 第 2 階層, 第 3 階層, 第 4 階層, 属性, 
-   1, xml, , , , , , <?xml version="1.0"encoding="UTF-8" ?>
-   2, feed, , , , , , "http://www.w3.org/2005/Atom" 
-   , , , , , , , "http://prismstandard.org/namespaces/basic/2.0/"
-   , , , , , , , "http://a9.com/-/spec/opensearch/1.1/"
-   , , , , , , , "ja"   
-   3, feed, result
-   4, feed, result, status, , , 処理結果ステータス, 0:正常 エラーの場合はエラーコード
-   5, feed, result, message, , , 処理結果メッセージ, なし:正常 エラーの場合はエラーメッセージ
-   6, feed, title, , , , フィード名, "Volumes and Issues"
-   7, feed, link, , , ,  クエリの URL
-   8, feed, id, , , , クエリの URI, link 要素と同様
-   9, feed, servicecd, , , , サービスコード, 巻号一覧取得は 2
-   10, feed, updated, , , , 取得日時, W3CDTF 表記
-   11, feed, opensearch :totalResults, , , , 検索結果総数,
-   12, feed, opensearch :startIndex  , , , , 開始件数, 検索結果総数のうち、出力を開始した件数
-   13, feed, opensearch :itemsPerPage, , , , 件数, 検索結果総数のうち、レスポンスに出力した件数
-   14, feed, entry
-   15, feed, entry, vols_title, , , 巻号一覧表示名, 予稿集の場合、開催グループ名称
-   16, feed, entry, vols_title, en, , 巻号一覧表示名(英)
-   17, feed, entry, vols_title, ja, , 巻号一覧表示名(日)
-   18, feed, entry, vols_link, , , 目次一覧 URL
-   19, feed, entry, vols_link, en, , 目次一覧 URL(英)
-   20, feed, entry, vols_link, ja, , 目次一覧 URL(日)
-   21, feed, entry, prism:issn , , , Print ISSN
-   22, feed, entry, prism:eIssn, , , Online ISSN
-   23, feed, entry, publisher, , , 学協会
-   24, feed, entry, publisher, name, , 学協会名
-   25, feed, entry, publisher, name, en, 学協会名(英)
-   26, feed, entry, publisher, name, ja, 学協会名(日)
-   27, feed, entry, publisher, url, , 学協会 URL
-   28, feed, entry, publisher, url, en, 学協会 URL(英)
-   29, feed, entry, publisher, url, ja, 学協会 URL(日)
-   30, feed, entry, publisher, cdjournal, , 資料コード, J-STAGE で付与される資料を識別するコード
-   31, feed, entry, material_title, , , 資料名
-   32, feed, entry, material_title, en, , 資料名(英)
-   33, feed, entry, material_title, ja, , 資料名(日)
-   34, feed, entry, prism:volume, , , 巻
-   35, feed, entry, cdvols, , , 分冊
-   36, feed, entry, prism:number, , , 号
-   37, feed, entry, prism:startingPage, href, , 開始ページ
-   38, feed, entry, prism:endingPage, , , 終了ページ
-   39, feed, entry, pubyear, , , 発行年, 発行年が単一の場合は YYYY、発行年が複数年の場合は YYYY-YYYY
-   40, feed, entry, systemcode, , , システムコード, 1:J-STAGE 公開されているシステムのコード
-   41, feed, entry, systemname, , , システム名, “J-STAGE”
-   42, feed, entry, title, , , サブフィード名 Atom, フィードで表示する名称 巻号一覧表示名（日）と同様
-   43, feed, entry, link, , , サブフィード URL, 目次一覧画面(日)の URL
-   44, feed, entry, id, , , サブフィード ID, サブフィード URL と同様
-   45, feed, entry, updated, , , 最新公開日, 号内記事の最新公開日 W3CDTF 表記
+
 
 論文検索結果取得
 ^^^^^^^^^^^^^^^^^^^
 
 .. csv-table::
+   :file: response_3.csv
 
-   No., XML タグ名, , , , , 出力内容, 備考
-   , 第 1 階層, 第 2 階層, 第 3 階層, 第 4 階層, 属性, 
-   1, xml, , , , , , <?xml version="1.0"encoding="UTF-8" ?>
-   2, feed, , , , , , "http://www.w3.org/2005/Atom"
-   2, feed, , , , , , "http://prismstandard.org/namespaces/basic/2.0/"
-   2, feed, , , , , , "http://a9.com/-/spec/opensearch/1.1/"
-   2, feed, , , , , , "ja"
-   3, feed, result
-   4, feed, result, status, , ,  処理結果ステータス, 0:正常 エラーの場合はエラーコード
-   5, feed, result, message, , , 処理結果メッセージ, なし:正常 エラーの場合はエラーメッセージ
-   6, feed, title, , , , , "Articles"
-   7, feed, link, , , , クエリの URI
-   8, feed, id, , , , id, link 要素と同様
-   9, feed, servicecd, , , , サービスコード, 論文検索結果取得は 3
-   10, feed, updated, , , , 取得日時, W3CDTF 表記
-   11, feed, opensearch:totalResults, , , , 検索結果総数
-   12, feed, opensearch:startIndex  , , , , 開始件数, 検索結果総数のうち、出力を開始した件数
-   13, feed, opensearch:itemsPerPage, , , , 件数, 検索結果総数のうち、レスポンスに出力した件数
-   14, feed, entry
-   15, feed, entry, article_title, , , 論文タイトル
-   16, feed, entry, article_title, en, , 論文タイトル(英)
-   17, feed, entry, article_title, ja, , 論文タイトル(日)
-   18, feed, entry, article_link, , , 書誌, URL 書誌事項画面の URL
-   19, feed, entry, article_link, en, , 書誌 URL(英)
-   20, feed, entry, article_link, ja, , 書誌 URL(日)
-   21, feed, entry, author, , , 著者名
-   22, feed, entry, author, en, , 著者名(英)
-   23, feed, entry, author, ja, , 著者名(日)
-   24, feed, entry, cdjournal, , , 資料コード, J-STAGE で付与される資料を識別するコード
-   25, feed, entry, material_title, , , 資料名
-   26, feed, entry, material_title, en, , 資料名(英)
-   27, feed, entry, material_title, ja, , 資料名(日)
-   28, feed, entry, prism:issn, , , Print ISSN
-   29, feed, entry, prism:eIssn, , , Online ISSN
-   30, feed, entry, prism:volume, , , 巻
-   31, feed, entry, cdvols, , , 分冊
-   32, feed, entry, prism:number, , , 号
-   33, feed, entry, prism:startingPage, , , 開始ページ
-   34, feed, entry, prism:endingPage, , , 終了ページ
-   35, feed, entry, pubyear, , , 発行年, 発行年が単一の場合は YYYY、発行年が複数年の場合は YYYY-YYYY
-   36, feed, entry, joi, , , JOI
-   37, feed, entry, prism:doi, , , DOI
-   38, feed, entry, systemcode, , , システムコード, 1:J-STAGE 公開されているシステムのコード
-   39, feed, entry, systemname, , , システム名, "J-STAGE"
-   40, feed, entry, title, , , サブフィード名, Atom フィードで表示する名称 論文タイトル（日）と同様
-   41, feed, entry, link, , , サブフィード URL, 書誌事項画面(日)の URL
-   42, feed, entry, id, , , サブフィード ID, サブフィード URL と同様
-   43, feed, entry, updated, , , 記事の公開日, 記事の公開日 W3CDTF 表記
    
 5. エラーメッセージ
 ----------------------
@@ -279,3 +184,152 @@ J-STAGE WebAPI から返却する XML のフォーマットは以下のとおり
    12, 論文一覧の取得で、資料名、論文名、著者名、著者所属機関、著者キーワード、抄録、全文、ISSN、資料コード、巻、号が一つも入力されていない場合, ERR_012, ERR_012:{0}, \*{0}には、必須項目のパラメータ名を出力
    13, 巻号一覧の取得で、検索条件で資料が特定できない場合, ERR_013, ERR_013
    14, 論文検索結果の取得で、ソート使用時に資料名、ISSN のいずれも設定されていない場合, ERR_014, ERR_014
+
+
+6. XML データサンプル
+-----------------------
+
+J-STAGE WebAPI から返却される XML データのサンプルは以下のとおり。
+
+6.1. 巻号一覧 
+^^^^^^^^^^^^^^^^^
+
+.. code-block:: xml
+
+   <?xml version="1.0" encoding="UTF-8"?>
+   <feed xmlns="http://www.w3.org/2005/Atom"
+   xmlns:prism="http://prismstandard.org/namespaces/basic/2.0/"
+   xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/"
+   xml:lang="ja">
+   <result>
+   <status>0</status>
+   <message/>
+   </result>
+   <title>Volumes and Issues</title>
+   <link
+   href="http://xxx.xxx.xx/do?service=2&amp;system=1&amp;pubyearfrom=&amp;pubyearto=&amp;material=%E6%83
+   %85%E5%A0%B1%E7%AE%A1%E7%90%86&amp;issn=&amp;cdjournal=&amp;volorder=&amp;article=&amp;author=&amp;af
+   fil=&amp;keyword=&amp;abst=&amp;text=&amp;sortflg=&amp;vol=&amp;no=&amp;start=&amp;count=100"/>
+
+   <id>http://xxx.xxx.xx/do?service=2&amp;system=1&amp;pubyearfrom=&amp;pubyearto=&amp;material=%E6%83%8
+   5%E5%A0%B1%E7%AE%A1%E7%90%86&amp;issn=&amp;cdjournal=&amp;volorder=&amp;article=&amp;author=&amp;affi
+   l=&amp;keyword=&amp;abst=&amp;text=&amp;sortflg=&amp;vol=&amp;no=&amp;start=&amp;count=100</id>
+   <servicecd>2</servicecd>
+   <updated>2010-04-24T15:09+09:00</updated>
+   <opensearch:totalResults>1</opensearch:totalResults>
+   <opensearch:startIndex>1</opensearch:startIndex>
+   <opensearch:itemsPerPage>1</opensearch:itemsPerPage>
+   <entry>
+   <vols_title>
+   <en><![CDATA[Vol. 39 (1996) , No. 1]]></en>
+   <ja><![CDATA[Vol. 39 (1996) , No. 1]]></ja>
+   </vols_title>
+   <vols_link>
+   <en>http://www.jstage.jst.go.jp/browse/johokanri/39/1/_contents</en>
+   <ja>http://www.jstage.jst.go.jp/browse/johokanri/39/1/_contents/-char/ja/</ja>
+   </vols_link>
+   <prism:issn>0021-7298</prism:issn>
+   <prism:eIssn>1347-1597</prism:eIssn>
+   <publisher>
+   <name/>
+   <url>
+   <en>http://xxx.xxxx.xx.xx</en>
+   <ja>http://xxx.xxxx.xx.xx</ja>
+   </url>
+   </publisher>
+   <cdjournal>johokanri</cdjournal>
+   <material_title>
+   <en><![CDATA[Journal of Information Processing and Management]]></en>
+   <ja><![CDATA[情報管理]]></ja>
+   </material_title>
+   <prism:volume>39</prism:volume>
+   <prism:number>1</prism:number>
+   <prism:startingPage>1</prism:startingPage>
+   <pubyear>1996</pubyear>
+   <systemcode>1</systemcode>
+   <systemname>J-STAGE</systemname>
+   <title><![CDATA[Vol. 39 (1996) , No. 1]]></title>
+   <link href="http://www.jstage.jst.go.jp/browse/johokanri/39/1/_contents/-char/ja/"/>
+   <id>http://www.jstage.jst.go.jp/browse/johokanri/39/1/_contents/-char/ja/</id>
+   <updated>2001-04-01T00:00+09:00</updated>
+   </entry>
+   </feed>
+
+論文検索結果
+^^^^^^^^^^^^^^
+
+.. code-block:: xml 
+
+   <?xml version="1.0" encoding="UTF-8"?>
+   <feed xmlns="http://www.w3.org/2005/Atom"
+   xmlns:prism="http://prismstandard.org/namespaces/basic/2.0/"
+   xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/"
+   xml:lang="ja">
+   <result>
+   <status>0</status>
+   <message/>
+   </result>
+   <title>Articles</title>
+   <link
+   href="http://xxx.xxx.xx/do?service=3&amp;system=1&amp;pubyearfrom=&amp;pubyearto=&amp;material=%E6%83
+   %85%E5%A0%B1%E7%AE%A1%E7%90%86&amp;issn=&amp;cdjournal=&amp;volorder=&amp;article=&amp;author=&amp;af
+   fil=&amp;keyword=&amp;abst=&amp;text=&amp;sortflg=&amp;vol=&amp;no=&amp;start=&amp;count=100"/>
+
+   <id>http://xxx.xxx.xx//do?service=3&amp;system=1&amp;pubyearfrom=&amp;pubyearto=&amp;material=%E6%83%
+   85%E5%A0%B1%E7%AE%A1%E7%90%86&amp;issn=&amp;cdjournal=&amp;volorder=&amp;article=&amp;author=&amp;aff
+   il=&amp;keyword=&amp;abst=&amp;text=&amp;sortflg=&amp;vol=&amp;no=&amp;start=&amp;count=100</id>
+   <servicecd>3</servicecd>
+   <updated>2010-04-24T15:13+09:00</updated>
+   <opensearch:totalResults>1</opensearch:totalResults>
+   <opensearch:startIndex>1</opensearch:startIndex>
+   <opensearch:itemsPerPage>1</opensearch:itemsPerPage>
+   <entry>
+   <article_title>
+   <en><![CDATA[Free Internet Access to Traditional Journals]]></en>
+   <ja><![CDATA[学術雑誌のインターネット上での無料アクセス提供]]></ja>
+   </article_title>
+   <article_link>
+   <en>http://www.jstage.jst.go.jp/article/johokanri/41/9/41_678/_article</en>
+   <ja>http://www.jstage.jst.go.jp/article/johokanri/41/9/41_678/_article/-char/ja/</ja>
+   </article_link>
+   <author>
+   <en>
+   <name><![CDATA[Thomas J. Walker]]></name>
+   <name><![CDATA[Soichi, transl. TOKIZANE]]></name>
+   </en>
+   <ja>
+   <name><![CDATA[ウォーカー トーマス J.]]></name>
+   <name><![CDATA[時実 象一 :訳]]></name>
+   </ja>
+   </author>
+   <cdjournal>johokanri</cdjournal>
+   <material_title>
+   <en><![CDATA[Journal of Information Processing and Management]]></en>
+   <ja><![CDATA[情報管理]]></ja>
+   </material_title>
+   <prism:issn>0021-7298</prism:issn>
+   <prism:eIssn>1347-1597</prism:eIssn>
+   <prism:volume>41</prism:volume>
+   <prism:number>9</prism:number>
+   <prism:startingPage>678</prism:startingPage>
+   <prism:endingPage>694</prism:endingPage>
+   <pubyear>1998</pubyear>
+   <joi>JST.JSTAGE/johokanri/41.678</joi>
+   <prism:doi>10.1241/johokanri.41.678</prism:doi>
+   <systemcode>1</systemcode>
+   <systemname>J-STAGE</systemname>
+   <title><![CDATA[学術雑誌のインターネット上での無料アクセス提供]]></title>
+   <link href="http://www.jstage.jst.go.jp/article/johokanri/41/9/41_678/_article/-char/ja/"/>
+   <id>http://www.jstage.jst.go.jp/article/johokanri/41/9/41_678/_article/-char/ja/</id>
+   <updated>2001-04-01T00:00+09:00</updated>
+   </entry>
+   </feed>
+
+（ご注意）
+--------------------
+
+本マニュアルおよびシステムのご提供・ご利用にあたって、JST は一切その責を負いません。利用
+者様の責任においてご活用ください。
+
+また、バグ等のご報告を除き、機能や使い方等のお問い合わせ対応・サポート等も行っておりませ
+ん。何卒ご了承くださいますようお願い申し上げます。
